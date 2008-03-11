@@ -1,4 +1,33 @@
 merb-profile
 ============
 
-A plugin for the Merb framework that provides action and code profiling
+A plugin for the Merb framework that provides action / template profiling
+
+Example
+=======
+
+class MyController < Merb::Controller
+  profile_action :index
+
+  def index
+    render
+  end
+
+  def list
+    profile "big query" do
+      @result = MyModel.big_query
+    end
+
+    profile "list render" do
+      render
+    end
+  end
+
+  def clear
+    clear_profiling
+  end
+
+  def results
+    render_profiling
+  end
+end
