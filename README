@@ -1,0 +1,4 @@
+merb-profile
+============
+
+A plugin for the Merb framework that provides action and code profiling
