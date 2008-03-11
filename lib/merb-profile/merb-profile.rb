@@ -45,13 +45,13 @@ class Merb::Profile
 
     def profile_action_before
       actions = Merb::Controller._profile.profiled_actions[controller_name]
-      return unless actions && actions.include?(action)
+      return unless actions && actions.include?(action_name.to_sym)
       RubyProf.start
     end
 
     def profile_action_after
       actions = Merb::Controller._profile.profiled_actions[controller_name]
-      return unless actions && actions.include?(action)
+      return unless actions && actions.include?(action_name.to_sym)
       Merb::Controller._profile.push(controller_name / action_name, RubyProf.stop)
     end
   end
